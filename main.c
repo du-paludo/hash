@@ -5,8 +5,11 @@
 int main() {
 
     // arrayItem_t *array = malloc(sizeof(arrayItem_t) * M);
-    int *t1 = malloc(sizeof(int) * M);
-    int *t2 = malloc(sizeof(int) * M);
+    // int *t1 = malloc(sizeof(int) * M);
+    // int *t2 = malloc(sizeof(int) * M);
+
+	node_t** t1 = init_hash();
+	node_t** t2 = init_hash();
 
     int value;
     
@@ -32,7 +35,9 @@ int main() {
 		}
 		scanf("%c", &c);
 	}
-	print_hash(t1, t2);
-    delete_hash(t1, t2);
+	print(t1);
+	print(t2);
+    delete_hash(t1);
+	delete_hash(t2);
 	return 0;
 }

@@ -4,8 +4,8 @@
 #define M 11
 
 struct node {
-    int key;
     int value;
+    int removed;
 }; typedef struct node node_t;
 
 struct arrayItem {
@@ -18,12 +18,16 @@ int h1(int key);
 
 int h2(int key);
 
-int find(node_t *list, int key);
+node_t** init_hash();
 
-void insert(node_t* t1, node_t* t2, int value);
+node_t* init_node();
 
-void delete_hash(node_t* t1, node_t* t2);
+int find(node_t** t, int value);
 
-void print(arrayItem_t *list);
+void insert(node_t** t1, node_t** t2, int value);
+
+void delete_hash(node_t** t);
+
+void print(node_t** t);
 
 #endif

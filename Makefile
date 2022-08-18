@@ -1,12 +1,12 @@
 CC = gcc
-CFLAGS = -Wall -g -D_DEFAULT_SOURCE
+CFLAGS = -Wall -g -D_DEFAULT_SOURCE -lm
 
 objects = hash.o main.o
 
 all: main
 
 main: $(objects)
-	$(CC) $(objects) -o main
+	$(CC) $(objects) $(CFLAGS) -o main
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
