@@ -12,12 +12,6 @@ int main() {
 	node_t** t2 = init_hash();
 
     int value;
-    
-    /* printf("o que voce que?\n");
-    for(int i = 0; i < 5; i++) {
-        scanf("%d" , &value);
-        insert(value, array);
-    } */
 
 	char c;
 	scanf("%c", &c);
@@ -31,12 +25,11 @@ int main() {
 		else if (c == 'r')
 		{
 			scanf(" %d", &value);
-			// remove(t1, t2, value);
+			remove_value(t1, t2, value);
 		}
 		scanf("%c", &c);
 	}
-	print(t1);
-	print(t2);
+	print(t1, t2);
     delete_hash(t1);
 	delete_hash(t2);
 	return 0;
