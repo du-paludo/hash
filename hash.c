@@ -78,7 +78,7 @@ void remove_value(node_t** t1, node_t** t2, int value) {
     {
         t2[index2]->removed = 1;
         free(t2[index2]);
-        printf("removido valor %d\n", value);
+        t2[index2] = NULL;
     }
     else if (t1[index1] != NULL && t1[index1]->value == value)
         t1[index1]->removed = 1;
