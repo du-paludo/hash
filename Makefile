@@ -1,21 +1,20 @@
-CC = gcc
-CFLAGS = -Wall -g -D_DEFAULT_SOURCE -lm
-
+flags = -Wall -std=c99 -lm
+name = myht
 objects = hash.o main.o
 
-all: main
+all: $(name)
 
-main: $(objects)
-	$(CC) $(objects) $(CFLAGS) -o main
+$(name): $(objects)
+	gcc -o $(name) $(objects) $(flags)
 
 main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+	gcc -c main.c $(flags)
 
-hash.o: hash.c hash.h
-	$(CC) $(CFLAGS) -c hash.c
+hash.o: hash.c
+	gcc -c hash.c $(flags)
 
 clean:
-	rm -f $(objects)
+	rm -f *~ *.o
 
 purge: clean
-	rm main
+	rm -f $(name)

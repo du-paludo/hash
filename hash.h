@@ -1,18 +1,13 @@
-#ifndef __hash__
-#define __hash__
+#ifndef __HASH__
+#define __HASH__
 
 #define M 11
 
-struct node {
+typedef struct node
+{
     int value;
     int removed;
-}; typedef struct node node_t;
-
-/* struct arrayItem {
-    struct node *head;
-    struct node *tail;
-    int size;
-}; typedef struct arrayItem arrayItem_t; */
+} node_t;
 
 int h1(int key);
 
