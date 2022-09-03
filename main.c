@@ -10,6 +10,7 @@ int main() {
 
 	node_t** t1 = init_hash();
 	node_t** t2 = init_hash();
+	node_t** aux = init_aux();
 
     int value;
 
@@ -29,8 +30,10 @@ int main() {
 		}
 		scanf("%c", &c);
 	}
-	print(t1, t2);
+	sort(t1,t2,aux);
+	print(aux);
     delete_hash(t1);
 	delete_hash(t2);
+	delete_aux(aux);	
 	return 0;
 }
