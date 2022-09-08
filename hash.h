@@ -2,7 +2,6 @@
 #define __HASH__
 
 #define M 11
-#define A 22
 
 typedef struct node
 {
@@ -16,32 +15,20 @@ int h1(int key);
 
 int h2(int key);
 
-node_t** init_hash();
+node_t** hash_init(int size);
 
-node_t** init_aux();
+node_t* node_init();
 
-node_t* init_node();
+int hash_search(node_t** t, int value);
 
-int find(node_t** t, int value);
+void hash_insert(node_t** t1, node_t** t2, int value);
 
-void insert(node_t** t1, node_t** t2, int value);
+void hash_remove(node_t** t1, node_t** t2, int value);
 
-void remove_value(node_t** t1, node_t** t2, int value);
+void hash_delete(node_t** t);
 
-void delete_hash(node_t** t);
+void hash_print(node_t** aux);
 
-void delete_aux(node_t** aux);
-
-void print(node_t** aux);
-
-void shift(node_t** vet, int a, int b);
-
-int search(int x, node_t** vet, int a, int b);
-
-void insere(node_t** vet, int a, int b);
-
-int insertionSort(node_t** vet, int a, int b);
-
-void sort(node_t** t1, node_t** t2, node_t** aux);
+int hash_merge(node_t** t1, node_t** t2, node_t** aux);
 
 #endif

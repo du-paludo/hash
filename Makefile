@@ -1,6 +1,6 @@
 flags = -Wall -std=c99 -lm
 name = myht
-objects = hash.o main.o
+objects = hash.o sort.o main.o
 
 all: $(name)
 
@@ -12,6 +12,9 @@ main.o: main.c
 
 hash.o: hash.c
 	gcc -c hash.c $(flags)
+
+sort.o: sort.c
+	gcc -c sort.c $(flags)
 
 clean:
 	rm -f *~ *.o
