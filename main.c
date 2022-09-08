@@ -5,9 +5,9 @@
 
 int main()
 {
-	node_t** t1 = hash_init(M);
-	node_t** t2 = hash_init(M);
-	node_t** aux = hash_init(M*2);
+	item_t** t1 = hash_init(M);
+	item_t** t2 = hash_init(M);
+	item_t** aux = hash_init(M*2);
 
     int value;
 

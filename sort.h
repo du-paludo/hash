@@ -3,12 +3,12 @@
 
 #include "hash.h"
 
-int sort(node_t** vet, int a, int b);
+int sort(item_t** vet, int a, int b);
 
-void insert(node_t** vet, int a, int b);
+void insert(item_t** vet, int a, int b);
 
-int search(int x, node_t** vet, int a, int b);
+int search(int x, item_t** vet, int a, int b);
 
-void shift(node_t** vet, int a, int b);
+void shift(item_t** vet, int a, int b);
 
 #endif

@@ -13,28 +13,30 @@ int h2(int value)
     return floor(M * ((value * 0.9) - floor(value * 0.9)));
 }
 
-int hash_search(node_t** t, int value)
+int hash_search(item_t** t1, item_t** t2, int value)
 {
-    int key = h1(value);
-    if (t[key]->removed)
+    int index1 = h1(value);
+    int index2 = h2(value);
+    if (t1[index1] == NULL)
         return -1;
-    else if (t[key]->value == value)
-        return key;
-    else
-        return h2(value);
+    else if (t1[index1]->value == value && !t1[index1]->removed)
+        return index1;
+    else if (t2[index2] != NULL && t2[index2]->value == value && !t2[index2]->removed)
+        return index2;
+    return -1;
 }
 
-node_t** hash_init(int size)
+item_t** hash_init(int size)
 {
-    node_t** t = malloc(sizeof(node_t*) * size);
+    item_t** t = malloc(sizeof(item_t*) * size);
     for (int i = 0; i < M; i++)
         t[i] = NULL;
     return t;
 }
 
-node_t* node_init(int value, int index, char* table)
+item_t* item_init(int value, int index, char* table)
 {
-    node_t* aux = malloc(sizeof(node_t));
+    item_t* aux = malloc(sizeof(item_t));
     aux->removed = 0;
     aux->value = value;
     aux->table = table;
@@ -42,11 +44,11 @@ node_t* node_init(int value, int index, char* table)
     return aux;
 }
 
-void hash_insert(node_t** t1, node_t** t2, int value)
+void hash_insert(item_t** t1, item_t** t2, int value)
 {
     int index = h1(value);
     if (t1[index] == NULL)
-        t1[index] = node_init(value, index, "T1");
+        t1[index] = item_init(value, index, "T1");
     else if (t1[index]->removed)
     {
         t1[index]->value = value;
@@ -57,7 +59,7 @@ void hash_insert(node_t** t1, node_t** t2, int value)
     {
         int index2 = h2(t1[index]->value);
         if (t2[index2] == NULL)
-            t2[index2] = node_init(t1[index]->value, index2, "T2");
+            t2[index2] = item_init(t1[index]->value, index2, "T2");
         else if (t2[index2]->removed)
         {
             t2[index2]->value = t1[index]->value;
@@ -68,7 +70,7 @@ void hash_insert(node_t** t1, node_t** t2, int value)
     }
 }
 
-void hash_remove(node_t** t1, node_t** t2, int value)
+void hash_remove(item_t** t1, item_t** t2, int value)
 {
     int index1 = h1(value);
     int index2 = h2(value);
@@ -82,7 +84,7 @@ void hash_remove(node_t** t1, node_t** t2, int value)
         t1[index1]->removed = 1;
 }
 
-void hash_delete(node_t** t)
+void hash_delete(item_t** t)
 {
     for (int i = 0; i < M; i++)
         if (t[i] != NULL)
@@ -90,9 +92,27 @@ void hash_delete(node_t** t)
     free(t);
 }
 
-void hash_print(node_t** aux)
+void hash_print(item_t** aux)
 {
     for (int i = 0; i < M*2; i++)
         if (aux[i] != NULL)
             printf("%d,%s,%d\n", aux[i]->value, aux[i]->table, aux[i]->index);
+}
+
+int hash_merge(item_t** t1, item_t** t2, item_t** aux)
+{
+    int j = 0;
+    for (int i = 0; i < M; i++)
+        if ((t1[i] != NULL) && (t1[i]->removed == 0))
+        {
+            aux[j] = t1[i];
+            j++;
+        }
+    for (int i = 0; i < M; i++)
+        if ((t2[i] != NULL) && (t2[i]->removed == 0))
+        {
+            aux[j] = t2[i];
+            j++;
+        }
+    return j-1;
 }
