@@ -29,7 +29,7 @@ int hash_search(item_t** t1, item_t** t2, int value)
 item_t** hash_init(int size)
 {
     item_t** t = malloc(sizeof(item_t*) * size);
-    for (int i = 0; i < M; i++)
+    for (int i = 0; i < size; i++)
         t[i] = NULL;
     return t;
 }
