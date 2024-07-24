@@ -1,4 +1,4 @@
-# Hash table implementation
+# Hash Table Implementation
 
 This project implements a basic hash table with separate chaining for collision resolution and integrates sorting functionalities. It includes operations for inserting and removing elements in the hash table, merging two hash tables, and sorting the merged table. The project demonstrates dynamic memory allocation, hash functions, and sorting algorithms in C.
 
@@ -21,22 +21,22 @@ This project implements a basic hash table with separate chaining for collision 
 
 ## Usage
 
-1. Compilation: Compile the program using make.
+**1. Compilation:** Compile the program using make.
 
 ```sh
 make
 ```
 
-2. Execution: Run the compiled program.
+**2. Execution:** Run the compiled program.
 
 ```sh
 ./hash_sort_program
 ```
 
-3. Input: The program reads commands from standard input.
+**3. Input:** The program reads commands from standard input.
 
-- `i <value>`: Insert <value> into the hash table.
-- `r <value>`: Remove <value> from the hash table.
+- `i <value>`: Insert `<value>` into the hash table.
+- `r <value>`: Remove `<value>` from the hash table.
 - The program ends when EOF (End of File) is reached.
 
 ## Example
@@ -46,27 +46,26 @@ make
 i 10
 i 20
 r 10
-
 i 30
 ```
 
 ## Functions
 
 ### Hash Table Functions (hash.c)
-- hash_init(int size): Initializes a hash table of given size.
-- hash_insert(item_t** t1, item_t** t2, int value): Inserts a value into the hash table.
-- hash_remove(item_t** t1, item_t** t2, int value): Removes a value from the hash table.
-- hash_merge(item_t** t1, item_t** t2, item_t** aux): Merges two hash tables into an auxiliary table.
-- hash_print(item_t** aux): Prints the contents of the hash table.
-- hash_delete(item_t** t): Frees memory allocated for the hash table.
-- h1(int value): First hash function.
-- h2(int value): Second hash function.
+- `hash_init`: Initializes a hash table of given size.
+- `hash_insert`: Inserts a value into the hash table.
+- `hash_remove`: Removes a value from the hash table.
+- `hash_merge`: Merges two hash tables into an auxiliary table.
+- `hash_print`: Prints the contents of the hash table.
+- `hash_delete`: Frees memory allocated for the hash table.
+- `h1`: First hash function.
+- `h2`: Second hash function.
 
 ### Sorting Functions (sort.c)
-- sort(item_t** vet, int a, int b): Sorts an array using recursive insertion sort.
-- insert(item_t** vet, int a, int b): Helper function for insertion sort.
-- search(int x, item_t** vet, int a, int b): Searches for the appropriate position in the array.
-- shift(item_t** vet, int a, int b): Shifts elements in the array.
+- `sort`: Sorts an array using recursive insertion sort.
+- `insert`: Helper function for insertion sort.
+- `search`: Searches for the appropriate position in the array.
+- `shift`: Shifts elements in the array.
 
 ## Memory Management
 
